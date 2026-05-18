@@ -116,6 +116,8 @@ const ui = {
   aiCards: document.getElementById("ai-cards"),
   themeToggle: document.getElementById("theme-toggle"),
   backToTop: document.getElementById("back-to-top"),
+  mobileMenuToggle: document.getElementById("mobile-menu-toggle"),
+  mobileNav: document.getElementById("mobile-nav"),
 };
 
 function escapeHtml(text) {
@@ -852,6 +854,43 @@ function setupEvents() {
 
   ui.backToTop.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  if (ui.mobileMenuToggle && ui.mobileNav) {
+    ui.mobileMenuToggle.addEventListener("click", () => {
+      const nextOpen = !ui.mobileNav.classList.contains("is-open");
+      ui.mobileNav.classList.toggle("is-open", nextOpen);
+      ui.mobileMenuToggle.setAttribute("aria-expanded", String(nextOpen));
+      const icon = ui.mobileMenuToggle.querySelector("i");
+      if (icon) {
+        icon.setAttribute("data-lucide", nextOpen ? "x" : "menu");
+      }
+      refreshIcons();
+    });
+
+    ui.mobileNav.addEventListener("click", (event) => {
+      if (!(event.target instanceof HTMLAnchorElement)) return;
+      ui.mobileNav.classList.remove("is-open");
+      ui.mobileMenuToggle.setAttribute("aria-expanded", "false");
+      const icon = ui.mobileMenuToggle.querySelector("i");
+      if (icon) {
+        icon.setAttribute("data-lucide", "menu");
+      }
+      refreshIcons();
+    });
+  }
+
+  window.addEventListener("resize", () => {
+    if (!ui.mobileNav || !ui.mobileMenuToggle) return;
+    if (window.innerWidth > 1080 && ui.mobileNav.classList.contains("is-open")) {
+      ui.mobileNav.classList.remove("is-open");
+      ui.mobileMenuToggle.setAttribute("aria-expanded", "false");
+      const icon = ui.mobileMenuToggle.querySelector("i");
+      if (icon) {
+        icon.setAttribute("data-lucide", "menu");
+      }
+      refreshIcons();
+    }
   });
 
   window.addEventListener("scroll", () => {

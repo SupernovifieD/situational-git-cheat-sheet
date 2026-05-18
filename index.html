@@ -47,20 +47,40 @@
         </nav>
 
         <div class="header-actions">
+          <button
+            class="icon-btn mobile-menu-toggle"
+            id="mobile-menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="mobile-nav"
+            aria-label="Toggle navigation menu"
+          >
+            <i data-lucide="menu"></i>
+          </button>
           <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle color theme">
             <i data-lucide="moon-star"></i>
           </button>
           <a
-            class="btn btn-ghost"
+            class="btn btn-ghost header-github-btn"
             href="https://github.com/SupernovifieD/situational-git-cheat-sheet"
             target="_blank"
             rel="noreferrer"
           >
             <i data-lucide="star"></i>
-            <span>Star on GitHub</span>
+            <span class="header-github-label">Star on GitHub</span>
           </a>
         </div>
       </div>
+
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile primary">
+        <a href="#situations">Situations</a>
+        <a href="#panic-mode">Panic Mode</a>
+        <a href="#safety-guide">Safety</a>
+        <a href="#ai-safety">AI Assistants</a>
+        <a href="https://github.com/SupernovifieD/situational-git-cheat-sheet" target="_blank" rel="noreferrer">
+          GitHub
+        </a>
+      </nav>
     </header>
 
     <main id="main-content">

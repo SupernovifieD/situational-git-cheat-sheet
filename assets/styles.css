@@ -59,10 +59,12 @@ body {
   color: var(--text);
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.55;
+  overflow-x: hidden;
 }
 
 a {
   color: inherit;
+  overflow-wrap: anywhere;
 }
 
 img,
@@ -190,6 +192,14 @@ svg {
   gap: 0.55rem;
 }
 
+.mobile-menu-toggle {
+  display: none;
+}
+
+.mobile-nav {
+  display: none;
+}
+
 .btn,
 .icon-btn,
 .chip,
@@ -210,6 +220,7 @@ svg {
   gap: 0.5rem;
   padding: 0.58rem 0.8rem;
   font-weight: 600;
+  max-width: 100%;
 }
 
 .btn-primary {
@@ -438,6 +449,7 @@ h1 {
   padding: 0.42rem 0.7rem;
   background: var(--surface);
   color: var(--text-muted);
+  white-space: nowrap;
 }
 
 .chip.is-active {
@@ -526,6 +538,10 @@ h1 {
   padding: 0.46rem 0.5rem;
   border-radius: 6px;
   font-size: 0.9rem;
+}
+
+.category-link span:first-child {
+  min-width: 0;
 }
 
 .category-link:hover {
@@ -651,6 +667,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.6rem;
   padding: 0.45rem 0.6rem;
   border-bottom: 1px solid rgba(143, 158, 190, 0.32);
 }
@@ -658,6 +675,8 @@ h1 {
 .command-head span {
   color: #d7dff2;
   font-size: 0.78rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .copy-btn {
@@ -882,6 +901,40 @@ body.show-back-to-top .back-to-top {
     display: none;
   }
 
+  .mobile-menu-toggle {
+    display: inline-grid;
+  }
+
+  .mobile-nav {
+    border-top: 1px solid var(--border);
+    padding: 0.55rem 1rem 0.72rem;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+    background: rgba(15, 17, 23, 0.92);
+  }
+
+  :root[data-theme="light"] .mobile-nav {
+    background: rgba(255, 255, 255, 0.96);
+  }
+
+  .mobile-nav.is-open {
+    display: flex;
+  }
+
+  .mobile-nav a {
+    text-decoration: none;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    border-radius: 999px;
+    padding: 0.28rem 0.6rem;
+    font-size: 0.86rem;
+  }
+
+  .mobile-nav a:hover {
+    color: var(--text);
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
   }
@@ -945,5 +998,88 @@ body.show-back-to-top .back-to-top {
   .situation-card header {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .search-wrap {
+    padding: 0.58rem 0.65rem;
+  }
+
+  .slash-hint {
+    display: none;
+  }
+
+  .mobile-nav {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .header-inner {
+    gap: 0.55rem;
+  }
+
+  .brand-name {
+    font-size: 0.94rem;
+  }
+
+  .header-github-label {
+    display: none;
+  }
+
+  .header-github-btn {
+    padding: 0.45rem 0.5rem;
+  }
+
+  .hero-cta {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .hero-cta .btn {
+    justify-content: center;
+  }
+
+  .filter-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.2rem;
+    scrollbar-width: thin;
+  }
+
+  .chip {
+    flex: 0 0 auto;
+  }
+
+  .actions-row .ghost-inline {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .container {
+    width: min(1180px, calc(100% - 0.75rem));
+  }
+
+  .site-header {
+    backdrop-filter: blur(6px);
+  }
+
+  .brand-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .icon-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .situation-card {
+    padding: 0.85rem;
+  }
+
+  .command-block pre {
+    padding: 0.65rem;
   }
 }
