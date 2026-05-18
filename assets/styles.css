@@ -20,6 +20,10 @@
   --focus: #9db8ff;
   --shadow: 0 12px 30px rgba(2, 6, 16, 0.45);
   --terminal-command-text: #f6f9ff;
+  --panic-nav-bg: #f0b63f;
+  --panic-nav-text: #241300;
+  --panic-nav-border: #ffcf73;
+  --panic-nav-hover: #ffc85f;
 }
 
 :root[data-theme="light"] {
@@ -44,6 +48,10 @@
   --focus: #3e64db;
   --shadow: 0 8px 20px rgba(23, 36, 63, 0.12);
   --terminal-command-text: #23314f;
+  --panic-nav-bg: #d98509;
+  --panic-nav-text: #ffffff;
+  --panic-nav-border: #b66a00;
+  --panic-nav-hover: #c97807;
 }
 
 * {
@@ -186,6 +194,25 @@ svg {
 
 .header-nav a:hover {
   color: var(--text);
+}
+
+.header-nav a[href="#panic-mode"] {
+  color: var(--panic-nav-text);
+  background: var(--panic-nav-bg);
+  border: 1px solid var(--panic-nav-border);
+  border-radius: 999px;
+  padding: 0.22rem 0.62rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.header-nav a[href="#panic-mode"]:hover {
+  color: var(--panic-nav-text);
+  background: var(--panic-nav-hover);
+}
+
+.header-nav a[href="#panic-mode"]:focus-visible {
+  outline-color: var(--panic-nav-border);
 }
 
 .header-actions {
@@ -990,6 +1017,18 @@ body.show-back-to-top .back-to-top {
 
   .mobile-nav a:hover {
     color: var(--text);
+  }
+
+  .mobile-nav a[href="#panic-mode"] {
+    color: var(--panic-nav-text);
+    background: var(--panic-nav-bg);
+    border-color: var(--panic-nav-border);
+    font-weight: 700;
+  }
+
+  .mobile-nav a[href="#panic-mode"]:hover {
+    color: var(--panic-nav-text);
+    background: var(--panic-nav-hover);
   }
 
   .situations-layout {
