@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Situational Git Cheat Sheet — Git Commands for Real Developer Problems</title>
+    <meta
+      name="description"
+      content="A situation-first Git cheat sheet for developers, learners, and AI-assisted coders. Find the right Git command for mistakes, recovery, branches, remotes, conflicts, resets, stashes, and more."
+    />
+    <meta
+      name="keywords"
+      content="Git cheat sheet, Git commands, Git mistakes, Git reset, Git restore, Git reflog, Git stash, GitHub Pages, AI coding assistant, developer tools"
+    />
+    <meta property="og:title" content="Situational Git Cheat Sheet" />
+    <meta
+      property="og:description"
+      content="Git commands organized by real situations, with danger labels and plain-English explanations."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://supernovified.github.io/situational-git-cheat-sheet/" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="Situational Git home">
+          <span class="brand-icon" aria-hidden="true">
+            <i data-lucide="git-branch-plus"></i>
+          </span>
+          <span class="brand-copy">
+            <span class="brand-name">Situational Git</span>
+            <span class="brand-tagline">Git commands for the moment you actually need them.</span>
+          </span>
+        </a>
+
+        <nav class="header-nav" aria-label="Primary">
+          <a href="#situations">Situations</a>
+          <a href="#panic-mode">Panic Mode</a>
+          <a href="#safety-guide">Safety</a>
+          <a href="#ai-safety">AI Assistants</a>
+          <a href="https://github.com/SupernovifieD/situational-git-cheat-sheet" target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle color theme">
+            <i data-lucide="moon-star"></i>
+          </button>
+          <a
+            class="btn btn-ghost"
+            href="https://github.com/SupernovifieD/situational-git-cheat-sheet"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i data-lucide="star"></i>
+            <span>Star on GitHub</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="kicker">Don’t memorize Git. Recognize the situation.</p>
+            <h1>Git commands for the exact moment you need them.</h1>
+            <p class="lead">
+              A situation-first Git cheat sheet for developers, learners, and AI-assisted coders who want to
+              understand a command before trusting it with their repo.
+            </p>
+            <p class="lead-muted">
+              Built for the age of AI coding assistants — but for real humans who still get nervous before running
+              <code>reset --hard</code>, <code>clean -fd</code>, or a force push.
+            </p>
+            <div class="hero-cta">
+              <a class="btn btn-primary" href="#search-panel">
+                <i data-lucide="search"></i>
+                <span>Find my situation</span>
+              </a>
+              <a
+                class="btn btn-ghost"
+                href="https://github.com/SupernovifieD/situational-git-cheat-sheet"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i data-lucide="github"></i>
+                <span>Star the repo</span>
+              </a>
+            </div>
+            <p class="micro-note">
+              No magic. No vague command dumps. Just practical Git recipes with danger labels, plain-English
+              explanations, and recovery notes.
+            </p>
+          </div>
+
+          <div class="terminal-preview" aria-label="Command danger preview">
+            <div class="terminal-topbar">
+              <span></span><span></span><span></span>
+            </div>
+            <pre><code>git status
+git restore .
+git reset --hard
+git clean -fd</code></pre>
+            <ul class="risk-legend">
+              <li><span class="legend-dot safe"></span>SAFE: inspect first</li>
+              <li><span class="legend-dot caution"></span>CAUTION: discards tracked changes</li>
+              <li><span class="legend-dot danger"></span>DANGER: deletes untracked files</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="search-section" id="search-panel">
+        <div class="container">
+          <div class="section-head">
+            <h2>Search and Quick Filters</h2>
+            <p>Search by mistake, command, or Git mood.</p>
+          </div>
+          <label class="sr-only" for="situation-search">Search situations</label>
+          <div class="search-wrap">
+            <i data-lucide="search" aria-hidden="true"></i>
+            <input
+              id="situation-search"
+              type="search"
+              placeholder="Search situations, commands, or mistakes..."
+              autocomplete="off"
+            />
+            <kbd class="slash-hint" aria-label="Press slash to focus search">/</kbd>
+          </div>
+          <p class="search-examples">
+            reset, undo commit, stash, deleted file, force push, conflict, wrong branch
+          </p>
+          <div class="filter-row" role="toolbar" aria-label="Situation filters">
+            <button class="chip is-active" type="button" data-filter="all">All</button>
+            <button class="chip" type="button" data-filter="safe">Safe</button>
+            <button class="chip" type="button" data-filter="caution">Caution</button>
+            <button class="chip" type="button" data-filter="dangerous">Dangerous</button>
+            <button class="chip" type="button" data-filter="recovery">Recovery</button>
+            <button class="chip" type="button" data-filter="branches">Branches</button>
+            <button class="chip" type="button" data-filter="remotes">Remotes</button>
+            <button class="chip" type="button" data-filter="conflicts">Conflicts</button>
+            <button class="chip" type="button" data-filter="ai-safety">AI Safety</button>
+          </div>
+          <p class="result-count" id="result-count" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="panic-section" id="panic-mode">
+        <div class="container">
+          <div class="section-head">
+            <h2>Panic Mode</h2>
+            <p>Made a mess? Start here. These commands help you inspect first, then recover carefully.</p>
+          </div>
+          <div id="panic-cards" class="card-grid"></div>
+        </div>
+      </section>
+
+      <section id="situations">
+        <div class="container">
+          <div class="section-head">
+            <h2>Situational Cheat Sheet</h2>
+          </div>
+
+          <div class="intro-grid">
+            <article class="info-panel">
+              <h3>Not another command dump.</h3>
+              <p>
+                Most Git cheat sheets start with commands. This one starts with situations. Because when something
+                breaks, you are usually not thinking, “I need a reference for <code>git restore</code>.” You are
+                thinking, “I changed the wrong files. How do I get back safely?”
+              </p>
+              <p>
+                This project turns common Git panic moments into practical recipes with danger labels, explanations,
+                and safer first steps.
+              </p>
+            </article>
+            <article class="info-panel">
+              <h3>Learning Git? Start with situations.</h3>
+              <p>
+                Git makes more sense when you connect commands to real problems. Each recipe explains when to use a
+                command, what it changes, and what to check before running it.
+              </p>
+            </article>
+            <article class="info-panel">
+              <h3>Using AI to code? Keep Git human-readable.</h3>
+              <p>
+                AI assistants can move fast. Sometimes too fast. This cheat sheet helps you slow down at the right
+                moments: before deleting local files, rewriting history, force-pushing, or accepting a command you do
+                not fully understand.
+              </p>
+            </article>
+          </div>
+
+          <div class="situations-layout">
+            <aside class="category-sidebar" aria-label="Situation categories">
+              <button class="sidebar-toggle" type="button" id="category-toggle">
+                <i data-lucide="panel-left-open"></i>
+                <span>Browse categories</span>
+              </button>
+              <nav id="category-list"></nav>
+            </aside>
+            <div id="situations-content"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="safety-guide" class="safety-rules">
+        <div class="container">
+          <div class="section-head">
+            <h2>Git safety rules worth remembering</h2>
+          </div>
+          <ol class="rules-list">
+            <li>Inspect before you act.</li>
+            <li>Prefer reversible commands when working on shared branches.</li>
+            <li>Use <code>git clean -fdn</code> before <code>git clean -fd</code>.</li>
+            <li>Use <code>git push --force-with-lease</code>, not plain <code>git push --force</code>.</li>
+            <li>Use <code>git reflog</code> before assuming work is lost.</li>
+            <li>Never trust a command just because an AI assistant suggested it.</li>
+            <li>If secrets were committed, rotate them. Removing them from Git is not enough.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="ai-safety">
+        <div class="container">
+          <div class="section-head">
+            <h2>Working with Git in the age of AI assistants</h2>
+            <p>AI can write commands. You still own the repo.</p>
+          </div>
+          <p class="section-intro">
+            AI coding assistants are excellent at suggesting Git commands, but Git commands are not all equal. Some
+            only inspect your project. Some rewrite history. Some delete files. This cheat sheet is designed for the
+            moment when an assistant says “just run this” and your human brain says, “Wait — what does that do?”
+          </p>
+          <div id="ai-cards" class="card-grid"></div>
+        </div>
+      </section>
+
+      <section id="support" class="support-section">
+        <div class="container support-shell">
+          <h2>Support the repo</h2>
+          <p>
+            If this cheat sheet saves you from one Git panic spiral, consider supporting the project. Star the
+            repository, share it with another developer, open an issue, suggest a missing situation, or contribute a
+            clearer recipe.
+          </p>
+          <a
+            class="btn btn-primary"
+            href="https://github.com/SupernovifieD/situational-git-cheat-sheet"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i data-lucide="heart-handshake"></i>
+            <span>Support on GitHub</span>
+          </a>
+          <p class="support-note">
+            Good developer tools do not always need to be huge. Sometimes they just need to be there at the exact
+            moment your terminal gets scary.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">
+      <i data-lucide="arrow-up"></i>
+    </button>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>Made for developers, learners, and humans working with AI assistants.</p>
+        <nav aria-label="Footer">
+          <a href="https://github.com/SupernovifieD/situational-git-cheat-sheet" target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+          <a href="https://github.com/SupernovifieD/situational-git-cheat-sheet/issues" target="_blank" rel="noreferrer">
+            Issues
+          </a>
+          <a
+            href="https://github.com/SupernovifieD/situational-git-cheat-sheet/issues/new?title=New%20situation%20suggestion"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Suggest a situation
+          </a>
+          <a href="https://github.com/SupernovifieD/situational-git-cheat-sheet/blob/main/LICENSE" target="_blank" rel="noreferrer">
+            License
+          </a>
+        </nav>
+        <p class="footer-note">Read before you run. Inspect before you reset.</p>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+    <script src="assets/app.js" defer></script>
+  </body>
+</html>
