@@ -471,6 +471,7 @@ h1 {
   margin-top: 0.95rem;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.45rem;
 }
 
@@ -491,6 +492,7 @@ h1 {
   margin: 0.7rem 0 0;
   color: var(--text-muted);
   font-size: 0.9rem;
+  text-align: center;
 }
 
 .card-grid {
@@ -1110,14 +1112,7 @@ body.show-back-to-top .back-to-top {
   }
 
   .filter-row {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 0.2rem;
-    scrollbar-width: thin;
-  }
-
-  .chip {
-    flex: 0 0 auto;
+    justify-content: center;
   }
 
   .actions-row .ghost-inline {

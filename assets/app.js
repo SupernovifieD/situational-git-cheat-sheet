@@ -816,6 +816,15 @@ function setupEvents() {
     });
   });
 
+  const searchNavLinks = document.querySelectorAll('[data-focus-search="true"]');
+  searchNavLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      window.setTimeout(() => {
+        ui.searchInput.focus();
+      }, 160);
+    });
+  });
+
   document.addEventListener("keydown", (event) => {
     if (event.key !== "/") return;
     const target = event.target;

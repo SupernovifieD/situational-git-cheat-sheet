@@ -38,7 +38,7 @@
         </a>
 
         <nav class="header-nav" aria-label="Primary">
-          <a href="#situations">Situations</a>
+          <a href="#search-panel" data-focus-search="true">Search</a>
           <a href="#panic-mode">Panic Mode</a>
           <a href="#safety-guide">Safety</a>
           <a href="#ai-safety">AI Assistants</a>
@@ -74,7 +74,7 @@
       </div>
 
       <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile primary">
-        <a href="#situations">Situations</a>
+        <a href="#search-panel" data-focus-search="true">Search</a>
         <a href="#panic-mode">Panic Mode</a>
         <a href="#safety-guide">Safety</a>
         <a href="#ai-safety">AI Assistants</a>
@@ -127,6 +127,16 @@ git clean -fd</code></pre>
         </div>
       </section>
 
+      <section class="panic-section" id="panic-mode">
+        <div class="container">
+          <div class="section-head">
+            <h2>Panic Mode</h2>
+            <p>Made a mess? Start here. These commands help you inspect first, then recover carefully.</p>
+          </div>
+          <div id="panic-cards" class="card-grid"></div>
+        </div>
+      </section>
+
       <section class="search-section" id="search-panel">
         <div class="container">
           <div class="section-head">
@@ -159,16 +169,6 @@ git clean -fd</code></pre>
             <button class="chip" type="button" data-filter="ai-safety">AI Safety</button>
           </div>
           <p class="result-count" id="result-count" aria-live="polite"></p>
-        </div>
-      </section>
-
-      <section class="panic-section" id="panic-mode">
-        <div class="container">
-          <div class="section-head">
-            <h2>Panic Mode</h2>
-            <p>Made a mess? Start here. These commands help you inspect first, then recover carefully.</p>
-          </div>
-          <div id="panic-cards" class="card-grid"></div>
         </div>
       </section>
 
