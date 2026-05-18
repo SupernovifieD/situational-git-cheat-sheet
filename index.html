@@ -93,28 +93,24 @@
               A situation-first Git cheat sheet for developers, learners, and AI-assisted coders who want to
               understand a command before trusting it with their repo.
             </p>
-            <p class="lead-muted">
-              Built for the age of AI coding assistants — but for real humans who still get nervous before running
-              <code>reset --hard</code>, <code>clean -fd</code>, or a force push.
-            </p>
             <div class="hero-cta">
               <a class="btn btn-primary" href="#search-panel">
                 <i data-lucide="search"></i>
                 <span>Find my situation</span>
               </a>
-              <a
-                class="btn btn-ghost"
-                href="https://github.com/SupernovifieD/situational-git-cheat-sheet"
-                target="_blank"
-                rel="noreferrer"
+              <button
+                class="btn btn-ghost btn-disabled"
+                type="button"
+                disabled
+                aria-disabled="true"
+                title="Print-ready download coming soon"
               >
-                <i data-lucide="github"></i>
-                <span>Star the repo</span>
-              </a>
+                <i data-lucide="file-down"></i>
+                <span>Print-ready download (Soon)</span>
+              </button>
             </div>
             <p class="micro-note">
-              No magic. No vague command dumps. Just practical Git recipes with danger labels, plain-English
-              explanations, and recovery notes.
+              No magic. No vague command dumps. Just practical Git recipes.
             </p>
           </div>
 
@@ -126,11 +122,6 @@
 git restore .
 git reset --hard
 git clean -fd</code></pre>
-            <ul class="risk-legend">
-              <li><span class="legend-dot safe"></span>SAFE: inspect first</li>
-              <li><span class="legend-dot caution"></span>CAUTION: discards tracked changes</li>
-              <li><span class="legend-dot danger"></span>DANGER: deletes untracked files</li>
-            </ul>
           </div>
         </div>
       </section>

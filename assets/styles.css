@@ -279,6 +279,13 @@ svg {
   background: var(--surface-strong);
 }
 
+.btn-disabled,
+.btn[disabled] {
+  opacity: 0.72;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .icon-btn {
   width: 37px;
   height: 37px;
@@ -288,14 +295,14 @@ svg {
 }
 
 .hero {
-  padding: 3.2rem 0 2.2rem;
+  padding: 2.5rem 0 1.8rem;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 410px);
-  gap: 1.5rem;
-  align-items: start;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 380px);
+  gap: 1.25rem;
+  align-items: center;
 }
 
 .kicker {
@@ -312,19 +319,19 @@ h1 {
 }
 
 .lead {
-  margin: 1rem 0 0;
+  margin: 0.8rem 0 0;
   color: var(--text);
-  max-width: 62ch;
+  max-width: 58ch;
 }
 
 .lead-muted {
-  margin: 0.7rem 0 0;
+  margin: 0.5rem 0 0;
   color: var(--text-muted);
-  max-width: 62ch;
+  max-width: 58ch;
 }
 
 .hero-cta {
-  margin-top: 1.35rem;
+  margin-top: 1rem;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -332,10 +339,10 @@ h1 {
 }
 
 .micro-note {
-  margin: 0.95rem 0 0;
+  margin: 0.7rem 0 0;
   color: var(--text-muted);
   max-width: 72ch;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
 }
 
 .terminal-preview {
@@ -344,6 +351,7 @@ h1 {
   background: linear-gradient(160deg, var(--surface) 0%, var(--bg-elevated) 100%);
   box-shadow: var(--shadow);
   overflow: hidden;
+  align-self: center;
 }
 
 .terminal-topbar {
@@ -373,7 +381,7 @@ h1 {
 
 .terminal-preview pre {
   margin: 0;
-  padding: 1rem 1rem 0.6rem;
+  padding: 1rem;
   font-family: "JetBrains Mono", "Fira Code", ui-monospace, Menlo, Consolas, monospace;
   color: var(--terminal-command-text);
   overflow-x: auto;
@@ -381,40 +389,6 @@ h1 {
 
 .terminal-preview pre code {
   color: var(--terminal-command-text);
-}
-
-.risk-legend {
-  list-style: none;
-  margin: 0;
-  padding: 0.35rem 1rem 1rem;
-  color: var(--text-muted);
-  display: grid;
-  gap: 0.35rem;
-  font-size: 0.88rem;
-}
-
-.risk-legend li {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.legend-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-}
-
-.legend-dot.safe {
-  background: var(--safe);
-}
-
-.legend-dot.caution {
-  background: var(--caution);
-}
-
-.legend-dot.danger {
-  background: var(--danger);
 }
 
 .section-head h2 {
