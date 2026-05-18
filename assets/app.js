@@ -118,6 +118,7 @@ const ui = {
   backToTop: document.getElementById("back-to-top"),
   mobileMenuToggle: document.getElementById("mobile-menu-toggle"),
   mobileNav: document.getElementById("mobile-nav"),
+  footerYear: document.getElementById("footer-year"),
 };
 
 function escapeHtml(text) {
@@ -796,6 +797,11 @@ function refreshIcons() {
   }
 }
 
+function setFooterYear() {
+  if (!ui.footerYear) return;
+  ui.footerYear.textContent = String(new Date().getFullYear());
+}
+
 function setupEvents() {
   ui.searchInput.addEventListener("input", (event) => {
     state.query = event.target.value.trim();
@@ -920,6 +926,7 @@ async function loadAndRenderSituations() {
 
 async function init() {
   initTheme();
+  setFooterYear();
   renderPanicCards();
   renderAiCards();
   setupEvents();
