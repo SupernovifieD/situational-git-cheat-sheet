@@ -769,9 +769,11 @@ function copyToClipboard(text, sourceButton) {
   fallbackCopy();
 }
 
-function applyTheme(theme) {
+function applyTheme(theme, { persist = true } = {}) {
   document.documentElement.dataset.theme = theme;
-  localStorage.setItem(THEME_KEY, theme);
+  if (persist) {
+    localStorage.setItem(THEME_KEY, theme);
+  }
   const iconName = theme === "dark" ? "sun" : "moon-star";
   const iconElement = ui.themeToggle.querySelector("i");
   iconElement.setAttribute("data-lucide", iconName);
@@ -782,10 +784,10 @@ function applyTheme(theme) {
 function initTheme() {
   const stored = localStorage.getItem(THEME_KEY);
   if (stored === "light" || stored === "dark") {
-    applyTheme(stored);
+    applyTheme(stored, { persist: false });
     return;
   }
-  applyTheme("dark");
+  applyTheme("dark", { persist: false });
 }
 
 function refreshIcons() {

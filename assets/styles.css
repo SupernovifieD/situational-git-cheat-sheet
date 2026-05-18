@@ -19,6 +19,7 @@
   --recovery-soft: rgba(119, 167, 255, 0.2);
   --focus: #9db8ff;
   --shadow: 0 12px 30px rgba(2, 6, 16, 0.45);
+  --terminal-command-text: #f6f9ff;
 }
 
 :root[data-theme="light"] {
@@ -42,6 +43,7 @@
   --recovery-soft: rgba(62, 100, 219, 0.13);
   --focus: #3e64db;
   --shadow: 0 8px 20px rgba(23, 36, 63, 0.12);
+  --terminal-command-text: #23314f;
 }
 
 * {
@@ -346,8 +348,12 @@ h1 {
   margin: 0;
   padding: 1rem 1rem 0.6rem;
   font-family: "JetBrains Mono", "Fira Code", ui-monospace, Menlo, Consolas, monospace;
-  color: #f6f9ff;
+  color: var(--terminal-command-text);
   overflow-x: auto;
+}
+
+.terminal-preview pre code {
+  color: var(--terminal-command-text);
 }
 
 .risk-legend {
