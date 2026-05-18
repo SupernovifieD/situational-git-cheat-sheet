@@ -882,7 +882,7 @@ function setupEvents() {
 
   window.addEventListener("resize", () => {
     if (!ui.mobileNav || !ui.mobileMenuToggle) return;
-    if (window.innerWidth > 1080 && ui.mobileNav.classList.contains("is-open")) {
+    if (window.innerWidth > 920 && ui.mobileNav.classList.contains("is-open")) {
       ui.mobileNav.classList.remove("is-open");
       ui.mobileMenuToggle.setAttribute("aria-expanded", "false");
       const icon = ui.mobileMenuToggle.querySelector("i");
