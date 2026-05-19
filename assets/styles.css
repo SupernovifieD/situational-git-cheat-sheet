@@ -20,6 +20,9 @@
   --focus: #9db8ff;
   --shadow: 0 12px 30px rgba(2, 6, 16, 0.45);
   --terminal-command-text: #f6f9ff;
+  --inline-code-bg: #1d263a;
+  --inline-code-border: #344868;
+  --inline-code-text: #d5e5ff;
   --panic-nav-bg: #f0b63f;
   --panic-nav-text: #241300;
   --panic-nav-border: #ffcf73;
@@ -48,6 +51,9 @@
   --focus: #3e64db;
   --shadow: 0 8px 20px rgba(23, 36, 63, 0.12);
   --terminal-command-text: #23314f;
+  --inline-code-bg: #ebf1ff;
+  --inline-code-border: #c4d2ed;
+  --inline-code-text: #2b426f;
   --panic-nav-bg: #d98509;
   --panic-nav-text: #ffffff;
   --panic-nav-border: #b66a00;
@@ -70,6 +76,17 @@ body {
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.55;
   overflow-x: hidden;
+}
+
+code {
+  font-family: "JetBrains Mono", "Fira Code", ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.86em;
+  color: var(--inline-code-text);
+  background: var(--inline-code-bg);
+  border: 1px solid var(--inline-code-border);
+  border-radius: 6px;
+  padding: 0.06rem 0.34rem;
+  font-weight: 500;
 }
 
 a {
@@ -403,6 +420,15 @@ h1 {
 
 .terminal-preview pre code {
   color: var(--terminal-command-text);
+}
+
+.command-block code,
+.terminal-preview pre code {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  font-size: 0.86rem;
 }
 
 .section-head h2 {

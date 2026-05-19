@@ -32,7 +32,7 @@ const PANIC_CARDS = [
   {
     title: "First, do not run random commands.",
     description:
-      "Before resetting, cleaning, rebasing, or force-pushing, inspect your repo. Git usually gives you a way back, but the safest first move is to understand your current state.",
+      "Before `git reset --hard`, `git clean -fd`, `git rebase`, or `git push --force-with-lease`, inspect your repo. Git usually gives you a way back, but the safest first move is to understand your current state.",
     danger: "SAFE",
     commands: `git status
 git diff
@@ -65,7 +65,7 @@ git clean -fd`,
 git reset --hard HEAD@{1}`,
     whatThisDoes: "Finds previous HEAD states, then returns to one of them.",
     useWhen: "A reset, rebase, or branch move made work disappear.",
-    avoidWhen: "You are not sure which reflog entry is the right target. Create a rescue branch first.",
+    avoidWhen: "You are not sure which `reflog` entry is the right target. Create a rescue branch first.",
     saferFirstStep: "git branch rescue HEAD@{1}",
   },
 ];
@@ -149,7 +149,6 @@ function stripFrontMatter(markdown) {
 
 function stripMarkdown(raw) {
   return String(raw || "")
-    .replace(/`([^`]+)`/g, "$1")
     .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
     .replace(/\*\*([^*]+)\*\*/g, "$1")
     .replace(/\*([^*]+)\*/g, "$1")
@@ -435,7 +434,7 @@ function parseMarkdownContent(markdown) {
 }
 
 function highlightText(text, query) {
-  const plain = escapeHtml(text);
+  const source = String(text || "");
   const tokens = query
     .trim()
     .toLowerCase()
@@ -443,12 +442,22 @@ function highlightText(text, query) {
     .filter((token) => token.length > 1)
     .slice(0, 6);
 
-  if (!tokens.length) return plain;
+  const pattern = tokens.length ? tokens.map(escapeRegExp).join("|") : "";
+  const matcher = pattern ? new RegExp(`(${pattern})`, "gi") : null;
 
-  const pattern = tokens.map(escapeRegExp).join("|");
-  if (!pattern) return plain;
-
-  return plain.replace(new RegExp(`(${pattern})`, "gi"), "<mark>$1</mark>");
+  return source
+    .split(/(`[^`]+`)/g)
+    .filter((part) => part.length > 0)
+    .map((part) => {
+      const isInlineCode = part.startsWith("`") && part.endsWith("`");
+      const content = isInlineCode ? part.slice(1, -1) : part;
+      let escaped = escapeHtml(content);
+      if (matcher) {
+        escaped = escaped.replace(matcher, "<mark>$1</mark>");
+      }
+      return isInlineCode ? `<code>${escaped}</code>` : escaped;
+    })
+    .join("");
 }
 
 function highlightCommand(command) {
@@ -671,7 +680,7 @@ function renderAiCards() {
         <h4>${escapeHtml(card.title)}</h4>
         ${createDangerBadge("CAUTION")}
       </header>
-      <p>${escapeHtml(card.description)}</p>
+      <p>${highlightText(card.description, "")}</p>
       ${
         card.prompt
           ? `<div class="command-block">
@@ -692,7 +701,7 @@ function renderAiCards() {
       }
       ${
         card.note
-          ? `<p class="callout">${escapeHtml(card.note)}</p>`
+          ? `<p class="callout">${highlightText(card.note, "")}</p>`
           : ""
       }
     </article>`;
